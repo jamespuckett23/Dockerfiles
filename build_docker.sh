@@ -2,6 +2,6 @@
 
 echo "Building Dockerfile"
 
-dockerfile_path=~/workspace/Docker/humble-jammy/
+dockerfile_path=~/workspace/Docker/noetic-focal/
 
-docker build --file $dockerfile_path/base/Dockerfile --tag humble_base:latest .
+docker build --file $dockerfile_path/base/Dockerfile --tag noetic_base:latest .

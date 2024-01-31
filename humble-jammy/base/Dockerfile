@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:22.04
 
 # James Puckett <jcp0605@tamu.edu>
 # Ubuntu 22.04 - jammy
