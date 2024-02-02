@@ -1,8 +1,13 @@
 # Included in the Dockerfile
+- Built off the ros-perception image
+- Includes basic tools, options, and configurations for a nominal ROS-docker workspace
+
 
 # Setting up the Docker container
 
+
 # Setting up visuals from the Docker Container
+Two Options:
 1. X11 forwarding
 - --env DISPLAY=$DISPLAY
 - arg

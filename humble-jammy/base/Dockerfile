@@ -1,25 +1,17 @@
-FROM ubuntu:22.04
+FROM ros:humble-perception-jammy
 
 # James Puckett <jcp0605@tamu.edu>
 # Ubuntu 22.04 - jammy
 # ROS 2 - humble
 
 ARG DEBIAN_FRONTEND=noninteractive
-
-ENV ROS_DISTRO=humble
+SHELL ["/bin/bash", "-c"]
 ENV USER=rosdocker
-
-# SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 
 USER root
 
-RUN apt update && apt install -y software-properties-common curl && \
-    add-apt-repository universe && \
-    curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg && \
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
-
 RUN apt update && apt upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt install -y ros-${ROS_DISTRO}-desktop && \
+    DEBIAN_FRONTEND=noninteractive apt install -y ros-humble-desktop && \
     rm -rf /etc/sudoers && \
     apt install -y \
     python3-rosdep \
@@ -51,12 +43,11 @@ RUN apt-get update && apt-get upgrade --no-install-recommends -y && \
     libflann-dev 
 
 USER $USER
-
 ENV WORKSPACE=/home/$USER
 WORKDIR $WORKSPACE
 
-RUN echo "source /opt/ros/humble/setup.bash" << .bashrc && \
-    echo "source /home/$USER/CSCE635/devel/setup.bash" << .bashrc && \
-    echo "source /home/$USER/CSCE752/devel/setup.bash" << .bashrc && \
-    echo "source /home/$USER/MEEN689/devel/setup.bash" << .bashrc && \
-    /bin/bash -c 'source .bashrc'
+RUN echo "source /opt/ros/humble/setup.bash" >> .bashrc && \
+    echo "source /home/$USER/CSCE752/devel/setup.bash" >> .bashrc && \
+    echo "source /home/$USER/MEEN689/devel/setup.bash" >> .bashrc && \
+    echo "PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@docker-humble\$ '" >> .bashrc && \
+    . ~/.bashrc
