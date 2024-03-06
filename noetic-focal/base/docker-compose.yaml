@@ -2,17 +2,20 @@
 version: '3.8'
 services:
   ros_dev_env:
-    container_name: ros_noetic_courses
-    image: noetic_base:latest
+    container_name: ros_noetic
+    image: noetic_gazebo:latest
     build: ./
     volumes: 
       - /dev/:/dev/
       - /Users/jamespuckett/.ssh:/home/rosdocker/.ssh/
-      - /Users/jamespuckett/workspace/courses/CSCE635:/home/rosdocker/CSCE635/
+      - /Users/jamespuckett/workspace/courses/CSCE635/src/:/home/rosdocker/CSCE635/src/
     environment:
       - DISPLAY=novnc:0.0
     networks:
       - x11
+    ports:
+      - "8082:8082"
+      - "9093:9093"
     stdin_open: true
     tty: true
   novnc:

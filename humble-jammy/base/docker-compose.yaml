@@ -2,14 +2,15 @@
 version: '3.8'
 services:
   ros_dev_env:
-    container_name: ros_humble_courses
+    container_name: ros_humble
     image: humble_base:latest
     build: ./
     volumes: 
       - /dev/:/dev/
       - /Users/jamespuckett/.ssh:/home/rosdocker/.ssh/
-      - /Users/jamespuckett/workspace/courses/CSCE752:/home/rosdocker/CSCE752/
-      - /Users/jamespuckett/workspace/courses/MEEN689:/home/rosdocker/MEEN689/
+      - /Users/jamespuckett/workspace/courses/CSCE752/src/:/home/rosdocker/CSCE752/src/
+      - /Users/jamespuckett/workspace/courses/MEEN689/src/:/home/rosdocker/MEEN689/src/
+      - /Users/jamespuckett/workspace/pg_slam_ws/slam/src/:/home/rosdocker/slam/src/
     environment:
       - DISPLAY=novnc:0.0
     networks:
