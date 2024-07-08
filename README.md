@@ -19,3 +19,6 @@ Two Options:
 - https://websitebeaver.com/set-up-localhost-on-macos-high-sierra-apache-mysql-and-php-7-with-sslhttps
 - https://github.com/adeeb10abbas/ros2-docker-dev/tree/noetic -> set ROS/Docker up with webserver
 
+
+To setup a drake sim option, follow to the following link
+https://github.com/RobotLocomotion/drake-ros/tree/main/drake_ros_examples

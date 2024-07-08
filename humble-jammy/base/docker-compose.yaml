@@ -10,7 +10,9 @@ services:
       - /Users/jamespuckett/.ssh:/home/rosdocker/.ssh/
       - /Users/jamespuckett/workspace/courses/CSCE752/src/:/home/rosdocker/CSCE752/src/
       - /Users/jamespuckett/workspace/courses/MEEN689/src/:/home/rosdocker/MEEN689/src/
-      - /Users/jamespuckett/workspace/pg_slam_ws/slam/src/:/home/rosdocker/slam/src/
+      - /Users/jamespuckett/workspace/pg_slam_ws/src/:/home/rosdocker/slam/src/
+      - /Users/jamespuckett/workspace/BCDC/src:/home/rosdocker/BCDC/src/
+      - /Users/jamespuckett/workspace/rl_ws/src:/home/rosdocker/rl_ws/src/
     environment:
       - DISPLAY=novnc:0.0
     networks:
